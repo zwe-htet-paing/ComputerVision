@@ -1,1 +1,6 @@
 capture_images/
+ReferenceImages/
+
+*.pt
+
+requirements.txt
