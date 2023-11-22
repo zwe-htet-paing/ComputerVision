@@ -4,7 +4,7 @@ import cv2
 KNOWN_DISTANCE = 20  # in centimeters
 KNOWN_FACE_WIDTH = 14.3  # centimeters
 
-class FaceDetection:
+class FaceDetector:
     def __init__(self):
         self.face_detector = cv2.CascadeClassifier('model/haarcascade_frontalface_default.xml')
 
@@ -19,22 +19,28 @@ class FaceDetection:
 
         return face_width, frame
 
-def calculate_focal_length(measured_distance, face_real_width, face_width_in_image):
-    return (face_width_in_image * measured_distance) / face_real_width
+class DistanceCalculator:
+    @staticmethod
+    def calculate_focal_length(measured_distance, face_real_width, face_width_in_image):
+        return (face_width_in_image * measured_distance) / face_real_width
 
-def calculate_distance(face_real_width, focal_length, face_width_in_image):
-    return (face_real_width * focal_length) / face_width_in_image
+    @staticmethod
+    def calculate_distance(face_real_width, focal_length, face_width_in_image):
+        return (face_real_width * focal_length) / face_width_in_image
 
 def main():
     reference_image = cv2.imread("capture_images/frame-1.png")
-    face_detector = FaceDetection()
+    
+    # Instantiate FaceDetector and DistanceCalculator
+    face_detector = FaceDetector()
+    distance_caculator = DistanceCalculator()
 
     # Detect face in the reference image
     face_width, image = face_detector.detect(reference_image)
     cv2.imshow("reference_image", image)
 
     # Calculate focal length using reference measurements
-    focal_length = calculate_focal_length(KNOWN_DISTANCE, KNOWN_FACE_WIDTH, face_width)
+    focal_length = distance_caculator.calculate_focal_length(KNOWN_DISTANCE, KNOWN_FACE_WIDTH, face_width)
     print("Focal Length:", focal_length)
 
     cap = cv2.VideoCapture(0)
@@ -46,7 +52,7 @@ def main():
         face_width, frame = face_detector.detect(frame)
 
         # Measure the distance using focal length and face width
-        distance = calculate_distance(KNOWN_FACE_WIDTH, focal_length, face_width)
+        distance = distance_caculator.calculate_distance(KNOWN_FACE_WIDTH, focal_length, face_width)
 
         # Display the distance on the frame
         cv2.putText(frame, f" Distance = {distance}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 3)
