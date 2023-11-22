@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "serve an ml model using fastapi"
+version = "0.1.0"
+description = ""
+authors = ["zwe-htet-paing <zwehtetpaing.works@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
+torch = { version = "1.12.1", source="torch_cpu"}
+torchaudio = { version = "0.12.1", source="torch_cpu"}
+torchvision = { version = "0.13.1", source="torch_cpu"}
+
+[[tool.poetry.source]]
+name = "torch_cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "supplemental"
+
+
+[tool.poetry.group.dev.dependencies]
+locust = "^2.18.3"
+httpx = "^0.25.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
