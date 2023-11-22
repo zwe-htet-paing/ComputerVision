@@ -71,7 +71,12 @@ def create_directory(dir_name):
 
 def main():
     dir_name = "ReferenceImages"
-    cap = cv2.VideoCapture(0)
+    target_class = "person"
+    number_image_captured = 10
+    
+    cam_number = 0  # choose camera number
+    cap = cv2.VideoCapture(cam_number)
+    
     assert cap.isOpened()
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
@@ -92,14 +97,14 @@ def main():
         cv2.imshow('original', original)
 
         results = detector.predict(frame)
-        frame = detector.plot_bboxes(results, frame, target_class="person")
+        frame = detector.plot_bboxes(results, frame, target_class=target_class)
 
         end_time = time()
         fps = 1 / np.round(end_time - start_time, 2)
 
         cv2.putText(frame, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 2)
 
-        if capture and counter < 10:
+        if capture and counter < number_image_captured:
             counter += 1
             cv2.putText(
                 frame, f"Capturing Img No: {number}", (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)

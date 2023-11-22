@@ -9,10 +9,6 @@ class ObjectDetector:
         self.class_names_dict = self.model.model.names
         self.CLASS_NAME = class_name
 
-        # Distance constants
-        self.KNOWN_DISTANCE = 45  # INCHES
-        self.PERSON_WIDTH = 16  # INCHES
-
         # Colors for object detected
         self.COLORS = [(255, 0, 0), (255, 0, 255), (0, 255, 255), (255, 255, 0), (0, 255, 0), (255, 0, 0)]
         self.GREEN = (0, 255, 0)
@@ -64,14 +60,19 @@ class MeasurementCalculator:
         return distance
 
 def main():
-    obj_detector = ObjectDetector(class_name='person')
+    # Distance constants
+    KNOWN_DISTANCE = 45  # INCHES
+    KNOWN_OBJECT_WIDTH = 16  # INCHES
+    target_class = 'person'
+        
+    obj_detector = ObjectDetector(class_name=target_class)
 
     ref_person = cv2.imread('ReferenceImages/image3.png')
     person_data = obj_detector.detect_objects(ref_person)
     person_width_in_frame = person_data[0][1]
-
+    
     calculator = MeasurementCalculator()
-    focal_person = calculator.calculate_focal_length(obj_detector.KNOWN_DISTANCE, obj_detector.PERSON_WIDTH,
+    focal_person = calculator.calculate_focal_length(KNOWN_DISTANCE, KNOWN_OBJECT_WIDTH,
                                                       person_width_in_frame)
 
     cap = cv2.VideoCapture(0)
@@ -88,7 +89,7 @@ def main():
 
         for d in data:
             if d[0] == 'person':
-                distance = calculator.calculate_distance(focal_person, obj_detector.PERSON_WIDTH, d[1])
+                distance = calculator.calculate_distance(focal_person, KNOWN_OBJECT_WIDTH, d[1])
                 x, y = d[2]
                 cv2.rectangle(frame, (x, y - 3), (x + 150, y + 23), obj_detector.BLACK, -1)
                 cv2.putText(frame, f'Dis: {round(distance, 2)} inch', (x + 5, y + 13), obj_detector.FONTS, 0.48,
