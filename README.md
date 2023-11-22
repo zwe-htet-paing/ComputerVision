@@ -21,3 +21,14 @@ The **Object Detection and Measure Distance using YOLOv8** project is designed t
 ### How to Use
 
 To explore the Object Detection and Measure Distance using YOLOv8 project, visit the [Object Detection and Measure Distance using YOLOv8](./Object%20Detection%20and%20Measure%20Distance%20using%20YOLOv8/) directory.
+
+
+## Serve an ML Model using FastAPI
+
+### Overview
+
+The **Serve an ML Model using FastAPI** project is to serve as an Image Classifier API using FastAPI, allowing users to make predictions on images.
+
+### How to Use
+
+To explore the Serve an ML Model using FastAPI project, visit the [Serve an ML Model using FastAPI](./Serve%20an%20ML%20Model%20using%20FastAPI/) directory.
