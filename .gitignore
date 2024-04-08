@@ -1,4 +1,6 @@
+.ipynb_checkpoints
 capture_images/
 ReferenceImages/
-
+datasets
 *.pt
+notebook.ipynb
