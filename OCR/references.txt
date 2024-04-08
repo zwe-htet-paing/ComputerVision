@@ -1,0 +1,23 @@
+- https://wandb.ai/authors/text-recognition-crnn-ctc/reports/Text-Recognition-With-CRNN-CTC-Network--VmlldzoxNTI5NDI
+- https://pylessons.com/ctc-text-recognition
+- https://github.com/GabrielDornelles/pytorch-ocr
+
+- https://dredwardhyde.medium.com/multi-digit-sequence-recognition-with-crnn-and-ctc-loss-using-pytorch-framework-269a7aca2a6
+- https://github.com/pythonlessons/mltu/tree/main/Tutorials
+
+
+- https://github.com/carnotaur/crnn-tutorial/
+- https://www.kaggle.com/code/kowalskyyy999/captcha-recognition-crnn-ctcloss-using-pytorch
+- https://www.kaggle.com/code/rhaydricktavares/captcha-text-recognition-using-crnn-in-pytorch/notebook
+- https://www.kaggle.com/code/ilyamfsl/captcha-recognition-crnn-pytorch#Try-to-Predict
+- https://github.com/gokulkarthik/Deep-Learning-Projects.pytorch/blob/master/5-Captcha-Text-Recognition-With-CRNN.ipynb
+
+- https://www.kaggle.com/datasets/fournierp/captcha-version-2-images/code
+
+- https://codingvision.net/pytorch-crnn-seq2seq-digits-recognition-ctc
+
+- https://www.shaip.com/blog/15-best-opensource-handwriting-dataset/
+
+- https://www.kaggle.com/code/kowalskyyy999/captcha-recognition-crnn-ctcloss-using-pytorch
+- https://www.kaggle.com/code/rhaydricktavares/captcha-text-recognition-using-crnn-in-pytorch/notebook
+- https://www.kaggle.com/code/ilyamfsl/captcha-recognition-crnn-pytorch#Try-to-Predict
